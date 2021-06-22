@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Discount.API.Options;
-using Microsoft.Extensions.Configuration;
+using Discount.Grpc.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Npgsql;
 
-namespace Discount.API.Extensions
+namespace Discount.Grpc.Extensions
 {
     public static class HostExtensions
     {
@@ -28,7 +24,6 @@ namespace Discount.API.Extensions
                     logger.LogInformation("Migrating postgresql database.");
                     using var connection = new NpgsqlConnection(options.Value.ConnectionString);
                     connection.Open();
-
                     using var command = new NpgsqlCommand()
                     {
                         Connection = connection

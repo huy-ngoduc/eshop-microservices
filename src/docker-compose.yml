@@ -3,21 +3,21 @@ version: '3.4'
 services:
   catalogdb:
     image: mongo
-  
+
   basketdb:
     image: redis:alpine
 
   discountdb:
     image: postgres
 
-  pgadmin:
-    image: dpage/pgadmin4
-  
   orderdb:
     image: mcr.microsoft.com/mssql/server:2017-latest
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
+
+  pgadmin:
+    image: dpage/pgadmin4  
 
   portainer:
     image: portainer/portainer-ce
@@ -56,7 +56,7 @@ services:
     image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
-      dockerfile: ApiGateways/OcelotApiGw/Dockerfile
+      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
 
   shopping.aggregator:
     image: ${DOCKER_REGISTRY-}shoppingaggregator
@@ -75,9 +75,3 @@ volumes:
   portainer_data:
   postgres_data:
   pgadmin_data:
-
-
-
-
-
-
